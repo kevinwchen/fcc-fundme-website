@@ -58,8 +58,8 @@ async function fund() {
 }
 
 async function withdraw() {
-    console.log(`Withdrawing...`)
     if (typeof window.ethereum !== "undefined") {
+        console.log(`Withdrawing...`)
         const provider = new ethers.providers.Web3Provider(window.ethereum)
         const signer = provider.getSigner()
         const contract = new ethers.Contract(contractAddress, abi, signer)
