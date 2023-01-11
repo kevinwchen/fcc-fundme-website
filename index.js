@@ -18,7 +18,9 @@ async function connect() {
     if (typeof window.ethereum !== "undefined") {
         await window.ethereum.request({ method: "eth_requestAccounts" })
         console.log("Connected!")
-        connectButton.innerHTML = "Connected!"
+        const provider = new ethers.providers.Web3Provider(window.ethereum)
+        const signer = provider.getSigner()
+        connectButton.innerHTML = await signer.getAddress()
     } else {
         connectButton.innerHTML = "Please install Metamask!"
     }
